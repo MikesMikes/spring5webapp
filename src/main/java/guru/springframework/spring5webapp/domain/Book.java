@@ -19,6 +19,7 @@ public class Book {
     private Set<Author> authors;
 
     public Book() {
+
     }
 
     public Book(String title, String isbn, Set<Author> authors) {
