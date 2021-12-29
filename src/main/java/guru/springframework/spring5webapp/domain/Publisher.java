@@ -13,8 +13,10 @@ public class Publisher {
     private Long id;
 
     private String name;
+    private String addressLine1;
     private String city;
     private String state;
+    private String zip;
 
     @OneToMany
     @JoinColumn(name = "publisher_id")
@@ -23,28 +25,39 @@ public class Publisher {
     public Publisher() {
     }
 
-    public Publisher(String name, String city, String state) {
-        this.name = name;
-        this.city = city;
-        this.state = state;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-
-
-    public String getCity() {
-        return city;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                '}';
     }
 
-    public String getState() {
-        return state;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Publisher publisher = (Publisher) o;
+
+        return id != null ? id.equals(publisher.id) : publisher.id == null;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 
     public Long getId() {
@@ -63,35 +76,35 @@ public class Publisher {
         this.name = name;
     }
 
-
-    public Set<Book> getBooks() {
-        return books;
+    public String getAddressLine1() {
+        return addressLine1;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Publisher publisher = (Publisher) o;
-        return Objects.equals(id, publisher.id);
+    public String getCity() {
+        return city;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    @Override
-    public String toString() {
-        return "Publisher{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                '}';
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 }
