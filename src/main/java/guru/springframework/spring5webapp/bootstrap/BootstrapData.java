@@ -29,8 +29,10 @@ public class BootstrapData implements CommandLineRunner {
 
         Publisher publisher = new Publisher();
         publisher.setName("SFG Publishing");
+        publisher.setAddressLine1("16 Rumartins' Road");
         publisher.setCity("St Petersburg");
         publisher.setState("FL");
+        publisher.setZip("FL2 Q4Z");
 
         publisherRepository.save(publisher);
 
